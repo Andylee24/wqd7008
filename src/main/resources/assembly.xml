@@ -1,0 +1,60 @@
+<assembly>
+    <id>dep</id>
+    <formats>
+        <!--支持 zip，tar，tar.gz，tar.bz2，jar，dir，war 等 -->
+        <format>jar</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <fileSets>
+        <fileSet>
+            <directory>src/main/java</directory>
+            <outputDirectory>/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/resources</directory>
+            <outputDirectory>/</outputDirectory>
+            <fileMode>0644</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>${profile.dir}</directory>
+            <outputDirectory>/</outputDirectory>
+            <!-- 表示的是包含下面格式的资源文件 -->
+            <includes>
+                <include>*.xml</include>
+                <include>*.properties</include>
+                <include>**/*.xml</include>
+                <include>**/*.properties</include>
+            </includes>
+            <fileMode>0644</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/target/classes/</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>/**/*.class</include>
+                <include>*.xml</include>
+                <include>*.properties</include>
+                <include>*.yaml</include>
+            </includes>
+        </fileSet>
+
+    </fileSets>
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>/</outputDirectory>
+            <useProjectArtifact>true</useProjectArtifact>
+            <unpack>true</unpack>
+            <scope>runtime</scope>
+        </dependencySet>
+        <dependencySet>
+            <outputDirectory>/</outputDirectory>
+            <useProjectArtifact>true</useProjectArtifact>
+            <unpack>true</unpack>
+            <scope>system</scope>
+        </dependencySet>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+        </dependencySet>
+    </dependencySets>
+</assembly>

@@ -1,0 +1,91 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=bar-tick-align&code=PYBwLglsB2AEC8sDeAoW7JgDYFMBcya6sYOAHmAQOSAyAYFhyg3j6DUSoGBKDVANEergGaWwqAYxzRSAJypEAvlwzBgWSCAKpiJcRADmWnOOoBDMhADOnbrCOmACsAhi9qixgCeIfIJMALAwBNgAO5S6tIycrBamr5O6nwCVADMAKTm6ppaXvEALCnh6ABGwGBgwAC21MmpxEIwYAb2ADIG-ThYBGDiAK44YURkAILGJgQA2hZq6iRuHsIGpFrA4i5V6r5zBqNU_ZEQQp1KneI4nIIAog7idfalomAnVABi9gbQQhAGWLAAynoAbrs4MwcQQACRwHzAXnuAEkACr3ACyL06vAMQjAh3sWnu1nEoD0YGWwKoACUcFcsPdYa0cDVSqVOtBdnMoNAgYJoAB6AxUAC6eWIVhMsN2AGsYpN0B9tNAAOoQSFNFptDTdZywUIhIj8oguQamUbjdWE9zUX4fbrBYia2A69AmPQQQGG9QTdTQAw3aiALrlAA6mK2IJpm-QMkgFBVD8t8kOoADYAAy5dVrOqjACMaYSwMzseBAHZY3ngQBWACcxezxbT-dLudgACZC8CEsWi7A8_XgbHi7HeRYbX3pABuIA
+	⚠ 请注意，该图表不是 Apache ECharts 官方示例，而是由用户代码生成的。请注意鉴别其内容。
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="echarts.min.js"></script>
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.1/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/china.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.1/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    option = {
+   title: {
+    text: 'Classification of occupational categories',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      data: ['Agriculture', 'Entertainment', 'Financial Services', 'Health', 'IT', 'Manufacturing', 'Property', 'Retail', 'Telecommunications', 'n/a'],
+      axisTick: {
+        alignWithLabel: true
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value'
+    }
+  ],
+  series: [
+    {
+      name: 'Number of people',
+      type: 'bar',
+      barWidth: '60%',
+      data: [113, 136, 767, 595, 151, 796, 267, 357, 72, 656]
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
